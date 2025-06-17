@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Image from 'next/image';
+import { getAssetPath } from '../../lib/utils';
 
 export default function Hero() {
   return (
@@ -27,7 +28,7 @@ export default function Hero() {
         >
           <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
             <Image
-              src="/images/profile.jpg"
+              src={getAssetPath('/images/profile.jpg')}
               alt="Nico Cabral"
               fill
               className="rounded-full object-cover border-4 border-blue-500 shadow-lg shadow-blue-500/30"
