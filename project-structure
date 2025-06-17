@@ -1,0 +1,39 @@
+portfolio-nextjs/
+├── public/
+│   ├── images/
+│   │   ├── avatar.jpg
+│   │   ├── projects/
+│   │   └── ...
+├── app/
+│   ├── page.tsx
+│   ├── layout.tsx
+│   ├── loading.tsx
+│   ├── error.tsx
+│   ├── not-found.tsx
+│   ├── globals.css
+│   ├── sitemap.ts
+│   ├── manifest.ts
+│   └── robots.txt
+├── components/
+│   ├── layout/
+│   │   ├── Navigation.tsx
+│   │   └── Footer.tsx
+│   └── sections/
+│       ├── Hero.tsx
+│       ├── About.tsx
+│       ├── Experience.tsx
+│       ├── Skills.tsx
+│       ├── Projects.tsx
+│       └── Contact.tsx
+├── lib/
+│   └── config.ts
+├── types/
+│   └── index.ts
+└── data/
+    ├── experience.ts
+    ├── skills.ts
+    └── projects.ts
+├── tailwind.config.js
+├── next.config.js
+├── package.json
+└── tsconfig.json
