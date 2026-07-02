@@ -2,127 +2,106 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import { FiArrowUpRight, FiGithub, FiZap } from 'react-icons/fi';
 import { projectsData } from '../../data/projects';
+import SectionHeading from '../ui/SectionHeading';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const categories = ['All', ...new Set(projectsData.map(project => project.category))];
-  
-  const filteredProjects = activeFilter === 'All' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === activeFilter);
+  const categories = ['All', ...Array.from(new Set(projectsData.map((p) => p.category)))];
+
+  const filtered =
+    activeFilter === 'All' ? projectsData : projectsData.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="projects" className="py-20 px-6 bg-gray-900/50">
+    <section id="projects" className="relative py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Featured <span className="text-blue-500">Projects</span>
-        </motion.h2>
-        
-        <motion.p 
-          className="text-gray-300 text-center max-w-2xl mx-auto mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          A showcase of my recent work across various industries and technologies
-        </motion.p>
-        
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          {categories.map((category, idx) => (
+        <SectionHeading
+          eyebrow="Selected Work"
+          title="Featured"
+          accent="Projects"
+          subtitle="Enterprise platforms delivered across insurance, telecom, pharma, fintech, and internal tooling."
+        />
+
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((category) => (
             <button
-              key={idx}
+              key={category}
               onClick={() => setActiveFilter(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeFilter === category 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                activeFilter === category
+                  ? 'bg-gradient-to-r from-accent-blue to-accent-violet text-white shadow-glow-blue'
+                  : 'border border-white/10 bg-white/[0.03] text-slate-400 hover:text-white hover:border-white/20'
               }`}
             >
               {category}
             </button>
           ))}
-        </motion.div>
-        
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          <AnimatePresence>
-            {filteredProjects.map((project, idx) => (
-              <motion.div
+        </div>
+
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project) => (
+              <motion.article
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5 }}
-                className="bg-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all group"
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.35 }}
+                className="group glass card-glow flex flex-col p-6 hover:bg-white/[0.05] transition-colors"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
-                  <div className="absolute bottom-0 left-0 p-4">
-                    <span className="px-3 py-1 bg-blue-600/80 rounded-full text-xs font-medium">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-100">{project.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, techIdx) => (
-                      <span key={techIdx} className="text-xs px-2 py-1 bg-gray-700 rounded-md text-gray-300">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <a 
-                      href={project.liveUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors"
-                    >
-                      View Project →
-                    </a>
-                    
+                <div className="flex items-start justify-between">
+                  <span className="rounded-full border border-accent-cyan/30 bg-accent-cyan/10 px-3 py-1 text-xs font-medium text-accent-cyan">
+                    {project.category}
+                  </span>
+                  <div className="flex gap-2 text-slate-500">
                     {project.githubUrl && (
-                      <a 
-                        href={project.githubUrl} 
-                        target="_blank" 
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 text-sm font-medium hover:text-gray-300 transition-colors"
+                        aria-label="Source code"
+                        className="transition-colors hover:text-white"
                       >
-                        Source Code
+                        <FiGithub className="h-4 w-4" />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Live project"
+                        className="transition-colors hover:text-white"
+                      >
+                        <FiArrowUpRight className="h-4 w-4" />
                       </a>
                     )}
                   </div>
                 </div>
-              </motion.div>
+
+                <h3 className="mt-4 font-display text-lg font-semibold text-white group-hover:text-gradient transition-colors">
+                  {project.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">{project.description}</p>
+
+                {project.highlight && (
+                  <p className="mt-4 flex items-start gap-2 text-sm text-slate-300">
+                    <FiZap className="mt-0.5 h-4 w-4 shrink-0 text-accent-violet" />
+                    {project.highlight}
+                  </p>
+                )}
+
+                <div className="mt-auto pt-5 flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="chip">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
             ))}
           </AnimatePresence>
         </motion.div>

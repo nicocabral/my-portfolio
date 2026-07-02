@@ -1,71 +1,81 @@
 export const experienceData = [
   {
-    title: "Software Engineer 3",
-    company: "Asurion",
-    period: "Feb 2024 - Present",
-    techStack: "React/Next.js, Node.js, Python, Zustand, Tailwind CSS, AWS, Cloudscape",
+    title: "Full Stack JavaScript Developer",
+    company: "Bruntwork",
+    type: "Full-time",
+    period: "2024 - Present",
+    techStack: "NestJS, Next.js, MySQL, Prisma ORM, HubSpot CRM, Gmail API",
     responsibilities: [
-      "Enhanced internal web applications for database management with scalable and reusable components using Next.js and Zustand.",
-      "Introduced and migrated to Tailwind CSS for consistent design across modules.",
-      "Refactored frontend to unify conflicting UI libraries (Bootstrap + Material UI).",
-      "Developed and maintained backend APIs with Python and Node.js, improving data processing times by ~30%",
-      "Participated in architectural planning to centralize multiple apps into a unified platform using Cloudscape Design System"
-    ]
+      "Maintain and enhance Bruntwork's core internal web portal supporting multiple clients and staff across the organisation.",
+      "Built HubSpot CRM and Gmail API integrations for automated user-account syncing, group management, and access control.",
+      "Developed timesheet management, team management, annual increase reporting, and Perk Report modules.",
+      "Built the staff self-service portal for account, leave, and profile management.",
+      "Designed and maintained MySQL schema with Prisma ORM for type-safe, scalable database interactions.",
+    ],
+    ai: "Claude (Anthropic) + MCP+ClickUp — pull tickets directly into the IDE for context-aware code generation, automated PR descriptions, and pre-merge code reviews.",
+  },
+  {
+    title: "Senior Software Engineer",
+    company: "Asurion",
+    type: "Full-time",
+    period: "Feb 2024 - Present",
+    techStack: "React, Next.js, Node.js, Python, Zustand, Tailwind CSS, AWS, Cloudscape",
+    responsibilities: [
+      "Maintain and enhance the internal Data Catalog application used for organisation-wide database management.",
+      "Built scalable, reusable Next.js components; migrated the codebase to Tailwind CSS for design consistency.",
+      "Refactored the frontend to eliminate conflicting UI libraries (Bootstrap + Material UI).",
+      "Developed Python and Node.js backend APIs, improving data-processing performance by ~30%.",
+      "Contributed to architectural planning for a unified internal platform using AWS Cloudscape Design System.",
+    ],
+    ai: "Cursor AI as a daily IDE companion — inline code generation, automated refactors, codebase Q&A, and unit-test generation.",
   },
   {
     title: "Senior Frontend Engineer",
     company: "AppEvolve",
+    type: "Contract",
     period: "Aug 2024 - Apr 2025",
-    techStack: "React/Next.js, Python, Zustand, Tailwind CSS, AWS Amplify",
+    techStack: "React, Next.js, Python, Zustand, Tailwind CSS, AWS Amplify",
     responsibilities: [
-      "Led the development and completion of key web application components, ensuring delivery within tight project timelines and maintaining high-quality standards.",
-      "Integrated frontend components seamlessly with backend APIs, enhancing application functionality and user experience.",
-      "Collaborated closely with cross-functional teams to align technical solutions with business requirements, contributing to a smooth and efficient deployment process."
-    ]
+      "Led development of key web-application components, ensuring delivery within tight timelines.",
+      "Integrated frontend components with backend APIs to enhance functionality and user experience.",
+      "Collaborated with cross-functional teams to align technical solutions with business requirements.",
+    ],
   },
   {
-    title: "AEM/React Lead Developer",
-    company: "Accenture Inc",
-    period: "June 2023 - Jan 2024",
-    techStack: "AEM, React.js",
+    title: "AEM / React Lead Developer",
+    company: "Accenture Inc.",
+    type: "Full-time",
+    period: "Feb 2023 - Jan 2024",
+    techStack: "AEM, React.js, Angular, Jenkins, CI/CD",
     responsibilities: [
-      "Revamped legacy platforms using AEM and React.js",
-      "Designed and implemented custom AEM components, integrating with dynamic form builders.",
-      "Collaborated with UI/BA teams to translate complex requirements into scalable components.",
-      "Optimized performance and UI/UX across the platform"
-    ]
+      "Led a frontend overhaul for a Saudi government organisation and a local insurance platform using AEM and React.js.",
+      "Designed and implemented custom AEM components integrated with dynamic form builders.",
+      "Led payment integration (incl. Apple Pay) and public-store functionality on AEM for a Saudi telecom client.",
+      "Configured Jenkins CI/CD pipelines; built templates, experience/content fragments, and dynamic product pages.",
+    ],
   },
   {
-    title: "AEM/React Lead Developer",
-    company: "Accenture Inc",
-    period: "Feb 2023 - June 2023",
-    techStack: "AEM, React.js",
+    title: "Frontend Lead / AEM Developer",
+    company: "Accenture Inc.",
+    type: "Full-time",
+    period: "Oct 2020 - Jan 2023",
+    techStack: "Angular 7, Angular Material, ngrx, AEM",
     responsibilities: [
-      "Delivered a major frontend overhaul for a local insurance platform using AEM and React.js",
-      "Built modular components and form builders for enterprise data collection"
-    ]
+      "Built a JSON-driven dynamic form builder and workflow engine for a pharmaceutical client.",
+      "Architected a global ngrx data store for cross-component state management.",
+      "Enhanced component modularity and Angular services for a local insurance platform.",
+    ],
   },
   {
-    title: "AEM/React Lead Developer",
-    company: "Accenture Inc",
-    period: "Jul 2021 - Jan 2023",
-    techStack: "AEM, React.js, Jenkins",
-    responsibilities: [
-      "Led development of payment integration (incl. Apple Pay) and public store functionality on AEM",
-      "Created templates, experience/content fragments, and dynamic product pages.",
-      "Configured CI/CD via Jenkins, streamlined deployment pipelines."
-    ]
-  },
-  {
-    title: "Full Stack Developer Team Lead",
+    title: "Full Stack Developer — Team Lead",
     company: "IGen Technologies",
+    type: "Full-time",
     period: "Nov 2017 - Feb 2019",
-    techStack: "Laravel, Node.js, MySQL, AWS (Lambda, SNS, RDS, DynamoDB)",
+    techStack: "Laravel, Node.js, MySQL, AWS Lambda, DynamoDB, Socket.io",
     responsibilities: [
-      "Rebuilt platform core (API, database, modules) with focus on scalability",
+      "Rebuilt the CMS/Payment platform core (API, database, modules) with a focus on scalability.",
       "Integrated recurring and one-time billing solutions.",
-      "Developed sockets for real-time large data import, with progress feedback using Socket.io.",
-      "Created exportable analytics dashboard with graphs and reporting tools."
-    ]
-  }
+      "Developed real-time large-data import with Socket.io; built an exportable analytics dashboard.",
+    ],
+  },
 ];

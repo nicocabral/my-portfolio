@@ -1,62 +1,68 @@
 export const projectsData = [
   {
     id: 1,
-    title: "Insurance Platform Revamp",
-    description: "Led a complete frontend overhaul of a major insurance platform using AEM and React. Implemented modular components and form builders for enterprise data collection.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&crop=center",
-    category: "Insurance",
-    technologies: ["AEM", "React", "JavaScript", "CSS"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: null // If private project
+    title: "Internal Web Portal & CRM Sync",
+    description:
+      "Core internal portal for Bruntwork supporting multiple clients and staff. Built HubSpot CRM and Gmail API integrations for automated account syncing, group management, and access control.",
+    category: "Enterprise",
+    technologies: ["NestJS", "Next.js", "MySQL", "Prisma", "HubSpot API"],
+    highlight: "Timesheet, team, and self-service modules powering org-wide operations.",
+    liveUrl: null,
+    githubUrl: null,
   },
   {
     id: 2,
-    title: "Telecom Payment Integration",
-    description: "Developed payment integration systems including Apple Pay on a telecom platform. Created dynamic product pages and streamlined the checkout experience.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop&crop=center",
-    category: "Telecom",
-    technologies: ["AEM", "React", "Payment APIs", "Jenkins"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: null
+    title: "Enterprise Data Catalog",
+    description:
+      "Internal Data Catalog for organisation-wide database management at Asurion. Migrated to Tailwind CSS, removed conflicting UI libraries, and built scalable, reusable Next.js components.",
+    category: "Enterprise",
+    technologies: ["Next.js", "Node.js", "Python", "Zustand", "AWS Cloudscape"],
+    highlight: "Backend APIs improved data-processing performance by ~30%.",
+    liveUrl: null,
+    githubUrl: null,
   },
   {
     id: 3,
-    title: "Healthcare Data Dashboard",
-    description: "Built an analytics dashboard for healthcare data visualization with exportable reports and real-time monitoring capabilities.",
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=400&fit=crop&crop=center",
-    category: "Healthcare",
-    technologies: ["Next.js", "Node.js", "MongoDB", "D3.js"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: "https://github.com/nicocabral/healthcare-dashboard"
+    title: "Telecom Payment & Store Platform",
+    description:
+      "Payment integration including Apple Pay and public-store functionality on AEM for a Saudi telecom client. Delivered dynamic product pages and a streamlined checkout.",
+    category: "Telecom",
+    technologies: ["AEM", "React", "Payment APIs", "Jenkins"],
+    highlight: "End-to-end Apple Pay checkout on an enterprise CMS.",
+    liveUrl: null,
+    githubUrl: null,
   },
   {
     id: 4,
-    title: "Enterprise Database Management Portal",
-    description: "Enhanced internal web applications for database management with scalable components using Next.js and Zustand, improving data processing times by 30%.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center",
-    category: "Enterprise",
-    technologies: ["Next.js", "Zustand", "Tailwind CSS", "Python"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: null
+    title: "Insurance Platform Revamp",
+    description:
+      "Frontend overhaul for a Saudi government organisation and a local insurance platform using AEM and React.js, with custom components integrated into dynamic form builders.",
+    category: "Insurance",
+    technologies: ["AEM", "React", "Angular", "CI/CD"],
+    highlight: "Modular, reusable component library for enterprise data collection.",
+    liveUrl: null,
+    githubUrl: null,
   },
   {
     id: 5,
-    title: "Serino CMS & Payment Platform",
-    description: "Rebuilt platform core with focus on scalability, integrating recurring and one-time billing solutions with real-time data processing.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&crop=center",
-    category: "CMS",
-    technologies: ["Laravel", "Node.js", "MySQL", "AWS Lambda"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: "https://github.com/nicocabral/serino-cms"
+    title: "Pharmaceutical Workflow Engine",
+    description:
+      "JSON-driven dynamic form builder and workflow engine for a pharmaceutical client, backed by a global ngrx data store for cross-component state management.",
+    category: "Pharma",
+    technologies: ["Angular 7", "ngrx", "Angular Material", "AEM"],
+    highlight: "Config-driven forms that non-developers could extend.",
+    liveUrl: null,
+    githubUrl: null,
   },
   {
     id: 6,
-    title: "Pharmaceutical Workflow Engine",
-    description: "Developed a JSON-driven dynamic form builder and workflow engine for pharmaceutical processes with global data store using ngrx.",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&crop=center",
-    category: "Pharmaceutical",
-    technologies: ["Angular", "ngrx", "Material UI", "Node.js"],
-    liveUrl: "#", // Replace with actual URL
-    githubUrl: null
-  }
+    title: "CMS & Billing Platform",
+    description:
+      "Rebuilt a CMS/Payment platform core (API, database, modules) for scalability. Integrated recurring and one-time billing with real-time large-data import via Socket.io.",
+    category: "Fintech",
+    technologies: ["Laravel", "Node.js", "MySQL", "AWS Lambda", "Socket.io"],
+    highlight: "Real-time import with live progress + exportable analytics dashboard.",
+    liveUrl: null,
+    githubUrl: "https://github.com/nicocabral",
+  },
 ];

@@ -2,106 +2,132 @@
 
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FiArrowDown, FiMail } from 'react-icons/fi';
 import Image from 'next/image';
 import { getAssetPath } from '../../lib/utils';
+import { siteConfig } from '../../lib/config';
+
+const roles = ['Senior Software Engineer', 'Senior UI/UX Developer', 'AI-Augmented Developer'];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+};
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden">
-      {/* Animated background dots */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
-      </div>
-      
-      <motion.div 
-        className="z-10 text-center flex flex-col items-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-16">
+      {/* grid backdrop */}
+      <div className="absolute inset-0 z-0 bg-grid" />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 flex flex-col items-center text-center"
       >
-        {/* Profile Image */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.8 }}
-        >
-          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
+        {/* Availability pill */}
+        <motion.div variants={item}>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-mono text-slate-300 backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
+            </span>
+            Available for new opportunities
+          </span>
+        </motion.div>
+
+        {/* Profile */}
+        <motion.div variants={item} className="mt-8">
+          <div className="relative h-32 w-32 md:h-36 md:w-36 animate-float">
+            <div className="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-accent-cyan via-accent-blue to-accent-violet opacity-70 blur-md" />
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-accent-cyan via-accent-blue to-accent-violet animate-spin-slow" />
             <Image
               src={getAssetPath('/images/profile.jpg')}
               alt="Nico Cabral"
               fill
-              className="rounded-full object-cover border-4 border-blue-500 shadow-lg shadow-blue-500/30"
+              className="relative rounded-full object-cover border-2 border-ink-950"
               priority
             />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-teal-400/20"></div>
           </div>
         </motion.div>
 
-        <motion.h1 
-          className="text-4xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
+        <motion.h1
+          variants={item}
+          className="mt-8 font-display text-4xl md:text-7xl font-bold tracking-tight text-white"
         >
-          Nico Cabral
+          Nico Jay P. <span className="text-gradient-animate">Cabral</span>
         </motion.h1>
-        
-        <motion.h2 
-          className="text-xl md:text-3xl font-bold mb-6 text-gray-100"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          Developer Lead
-        </motion.h2>
-        
-        <motion.p 
-          className="text-md md:text-lg text-gray-300 max-w-2xl mx-auto mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          7+ years building scalable web applications & APIs with React, Next.js, and Node.js.
-          Specialized in delivering exceptional digital experiences across eCommerce, insurance, and telecom.
+
+        {/* Rotating role badges */}
+        <motion.div variants={item} className="mt-6 flex flex-wrap justify-center gap-2">
+          {roles.map((role) => (
+            <span
+              key={role}
+              className="rounded-full border border-accent-blue/30 bg-accent-blue/10 px-4 py-1.5 text-sm font-medium text-slate-100"
+            >
+              {role}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.p variants={item} className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-slate-400">
+          7+ years building scalable web platforms and APIs with{' '}
+          <span className="text-slate-200">React, Next.js, NestJS</span> and{' '}
+          <span className="text-slate-200">AEM</span> — with AI woven into every step of the workflow.
+          Delivered enterprise platforms across eCommerce, insurance, telecom, and pharma.
         </motion.p>
-        
-        <motion.div
-          className="flex gap-6 justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <a href="#contact" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/30">
+
+        <motion.div variants={item} className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#projects"
+            className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-7 py-3.5 font-medium text-white transition-all hover:shadow-glow-blue hover:scale-105"
+          >
+            View My Work
+            <FiArrowDown className="transition-transform group-hover:translate-y-0.5" />
+          </a>
+          <a
+            href={`mailto:${siteConfig.author.email}`}
+            className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-7 py-3.5 font-medium text-slate-200 backdrop-blur transition-all hover:border-accent-cyan/50 hover:text-white"
+          >
+            <FiMail />
             Get in Touch
           </a>
-          <a href="#projects" className="px-8 py-3 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-900/20 font-medium rounded-lg transition-all transform hover:scale-105">
-            See My Work
-          </a>
         </motion.div>
-        
-        <motion.div 
-          className="mt-12 flex gap-6 justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
-        >
-          <a href="https://github.com/nicocabral" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-400 hover:text-white transition-colors">
+
+        <motion.div variants={item} className="mt-10 flex items-center gap-5">
+          <a
+            href={siteConfig.author.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="text-2xl text-slate-500 transition-colors hover:text-white"
+          >
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/nicocabral" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-400 hover:text-white transition-colors">
+          <a
+            href={siteConfig.author.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-2xl text-slate-500 transition-colors hover:text-white"
+          >
             <FaLinkedin />
           </a>
         </motion.div>
       </motion.div>
-      
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-        <a href="#about" className="text-gray-400 hover:text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </a>
-      </div>
+
+      <a
+        href="#about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-white transition-colors"
+        aria-label="Scroll to about"
+      >
+        <FiArrowDown className="h-6 w-6 animate-bounce" />
+      </a>
     </section>
   );
 }

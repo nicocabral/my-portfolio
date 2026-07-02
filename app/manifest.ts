@@ -2,13 +2,14 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Nico Cabral - Developer Lead',
+    name: 'Nico Cabral — Senior Software Engineer & UI/UX Developer',
     short_name: 'Nico Cabral',
-    description: 'Developer Lead with 7+ years experience in API and Web Development',
+    description:
+      'Senior Software Engineer and UI/UX Developer with 7+ years building scalable web platforms and APIs.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#111827',
-    theme_color: '#3B82F6',
+    background_color: '#05060c',
+    theme_color: '#3b82f6',
     icons: [
       {
         src: '/favicon-32x32.png',

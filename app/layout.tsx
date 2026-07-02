@@ -1,14 +1,20 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import type { Metadata } from 'next';
 import Navigation from '../components/layout/Navigation';
 import Footer from '../components/layout/Footer';
 import { siteConfig } from '../lib/config';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-grotesk',
 });
 
 export const metadata: Metadata = {
@@ -61,7 +67,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans bg-gray-900 text-gray-100`}>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-ink-950 text-slate-200 antialiased`}
+      >
         <Navigation />
         {children}
         <Footer />

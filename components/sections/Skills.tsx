@@ -1,98 +1,92 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { skillsData } from '../../data/skills';
+import { FiLayout, FiServer, FiDatabase, FiCloud, FiZap } from 'react-icons/fi';
+import { HiOutlineSparkles } from 'react-icons/hi2';
+import { skillsData, coreStack } from '../../data/skills';
+import SectionHeading from '../ui/SectionHeading';
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  layout: FiLayout,
+  server: FiServer,
+  database: FiDatabase,
+  cloud: FiCloud,
+  plug: FiZap,
+  sparkles: HiOutlineSparkles,
+};
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 px-6">
+    <section id="skills" className="relative py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h2 
-          className="text-3xl md:text-4xl font-bold mb-16 text-center"
+        <SectionHeading
+          eyebrow="Toolbox"
+          title="Technical"
+          accent="Skills"
+          subtitle="The technologies I use to design, build, and ship production software."
+        />
+
+        {/* Proficiency meters — strongest stack */}
+        <motion.div
+          className="glass p-8 mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Technical <span className="text-blue-500">Skills</span>
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {skillsData.map((category, idx) => (
-            <motion.div 
-              key={idx}
-              className="bg-gray-800/50 rounded-xl p-8 border border-gray-700 hover:border-blue-500/40 transition-all"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              <h3 className="text-xl font-semibold mb-6 text-blue-400">{category.title}</h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, index) => (
-                  <motion.div 
-                    key={index}
-                    className="px-4 py-2 bg-gray-700/50 rounded-lg hover:bg-blue-900/30 transition-all text-sm text-gray-100 flex items-center gap-2"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+          <h3 className="font-display text-lg font-semibold text-white mb-6">Core Proficiency</h3>
+          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6">
+            {coreStack.map((s, i) => (
+              <div key={s.title}>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-slate-200">{s.title}</span>
+                  <span className="font-mono text-accent-cyan">{s.rating}%</span>
+                </div>
+                <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                  <motion.div
+                    className="h-full rounded-full bg-gradient-to-r from-accent-cyan via-accent-blue to-accent-violet"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${s.rating}%` }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.2 + (index * 0.05) }}
-                  >
-                    {/* You can add icons here if you want */}
-                    <span>{skill}</span>
-                  </motion.div>
-                ))}
+                    transition={{ duration: 1, delay: 0.2 + i * 0.08, ease: 'easeOut' }}
+                  />
+                </div>
               </div>
-            </motion.div>
-          ))}
-          
-          <motion.div 
-            className="md:col-span-2 bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-xl p-8 border border-blue-800/30"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-xl font-semibold mb-6 text-blue-300">AI Integration Experience</h3>
-            <p className="text-gray-300 leading-relaxed">
-              I've leveraged AI-assisted coding tools and prompt-based automation to accelerate development, reduce repetitive tasks, 
-              and improve overall productivity in feature delivery. By integrating AI into my workflow, I've been able to enhance 
-              code quality, streamline project delivery, and focus more on creative problem-solving aspects of development.
-            </p>
-          </motion.div>
-        </div>
-        
-        <motion.div 
-          className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <RatingCard title="React/Next.js" rating={8} />
-          <RatingCard title="Node.js" rating={7} />
-          <RatingCard title="AWS" rating={6} />
-          <RatingCard title="SQL" rating={7} />
+            ))}
+          </div>
         </motion.div>
+
+        {/* Category grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillsData.map((category, idx) => {
+            const Icon = iconMap[category.icon] ?? FiLayout;
+            return (
+              <motion.div
+                key={category.title}
+                className="glass glass-hover card-glow p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.06 }}
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br from-accent-blue/20 to-accent-violet/20 text-accent-cyan">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-display font-semibold text-white">{category.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="chip chip-hover">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
-  );
-}
-
-function RatingCard({ title, rating }: { title: string, rating: number }) {
-  return (
-    <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 hover:border-blue-500/40 transition-all">
-      <h4 className="text-lg font-medium text-gray-200 mb-2">{title}</h4>
-      <div className="flex gap-1">
-        {[...Array(10)].map((_, idx) => (
-          <div 
-            key={idx} 
-            className={`h-1.5 rounded-full ${idx < rating ? 'bg-blue-500' : 'bg-gray-700'}`}
-            style={{ width: '10%' }}
-          ></div>
-        ))}
-      </div>
-      <div className="text-right mt-1 text-sm text-blue-400 font-semibold">{rating}/10</div>
-    </div>
   );
 }
