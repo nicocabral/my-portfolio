@@ -115,7 +115,7 @@ This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-- **Email**: [contact@nicocabral.dev](mailto:contact@nicocabral.dev)
+- **Email**: [contact@nicocabral.dev](mailto:ncabral010694@gmail.com)
 - **LinkedIn**: [linkedin.com/in/nicocabral](https://linkedin.com/in/nicocabral)
 - **GitHub**: [github.com/nicocabral](https://github.com/nicocabral)
 
